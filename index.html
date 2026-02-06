@@ -3,901 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Central | OSINT Specialist</title>
+    <title>Gengs Shop | Standoff 2 Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dark-bg: #0a0a0a;
-            --dark-surface: #111111;
-            --dark-card: #1a1a1a;
-            --dark-border: #333333;
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --accent: #800020;
-            --accent-dark: #600018;
-            --accent-light: #a00028;
-            --transition: all 0.3s ease;
+            --primary: #ff6a00;
+            --secondary: #ee0979; 
+            --bg: #0d0d0d;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            cursor: none;
+            background: radial-gradient(circle at top right, #3d1a00, #0d0d0d 60%);
         }
 
-        /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
+        header {
+            padding: 50px 20px;
+            text-align: center;
         }
 
-        .cursor-follower {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            border: 1px solid rgba(128, 0, 32, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.2s ease-out;
-            mix-blend-mode: difference;
-        }
-
-        /* Advanced Background Effects */
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(128, 0, 32, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(128, 0, 32, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(128, 0, 32, 0.08) 0%, transparent 50%);
-            z-index: -3;
-            pointer-events: none;
-            transition: transform 0.1s ease;
-        }
-
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            filter: blur(40px);
-            animation: floatShape 20s infinite linear;
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-light);
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            top: 60%;
-            left: 70%;
-            animation-delay: -5s;
-        }
-
-        .shape-3 {
-            width: 250px;
-            height: 250px;
-            background: var(--accent-dark);
-            border-radius: 50% 50% 50% 70% / 50% 50% 70% 60%;
-            top: 20%;
-            left: 80%;
-            animation-delay: -10s;
-        }
-
-        @keyframes floatShape {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(100px, 50px) rotate(90deg);
-            }
-            50% {
-                transform: translate(50px, 100px) rotate(180deg);
-            }
-            75% {
-                transform: translate(-50px, 50px) rotate(270deg);
-            }
-        }
-
-        .scan-line {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0;
-            animation: scan 4s linear infinite;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes scan {
-            0% {
-                top: 0%;
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
+        header h1 {
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ff6a00, #ffae00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            transition: 0.5s ease-in-out;
         }
 
-        header {
-            padding: 3rem 0;
-            text-align: center;
-            background-color: rgba(17, 17, 17, 0.8);
-            border-bottom: 1px solid var(--dark-border);
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-            backdrop-filter: blur(20px);
-        }
-
-        .logo {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(
-                135deg,
-                #800020 0%,
-                #a00028 25%,
-                #c00030 50%,
-                #a00028 75%,
-                #800020 100%
-            );
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease infinite;
-            text-shadow: 
-                0 0 50px rgba(128, 0, 32, 0.6),
-                0 0 100px rgba(128, 0, 32, 0.3);
-            letter-spacing: 3px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            border-radius: 2px;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { 
-                background-position: 0% 50%;
-                filter: hue-rotate(0deg);
-            }
-            50% { 
-                background-position: 100% 50%;
-                filter: hue-rotate(10deg);
-            }
-        }
-
-        .tagline {
-            color: var(--text-secondary);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .nickname {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(128, 0, 32, 0.2), rgba(160, 0, 40, 0.1));
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid var(--accent);
-            backdrop-filter: blur(10px);
-            margin-top: 1rem;
-        }
-
-        .tabs-container {
-            display: flex;
-            justify-content: center;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-            gap: 15px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        .tab {
-            padding: 15px 35px;
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(34, 34, 34, 0.6));
-            border: 1px solid var(--dark-border);
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-            backdrop-filter: blur(10px);
-        }
-
-        .tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(128, 0, 32, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .tab:hover::before {
-            left: 100%;
-        }
-
-        .tab:hover {
-            color: var(--text-primary);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(128, 0, 32, 0.3);
-        }
-
-        .tab.active {
-            background: linear-gradient(135deg, rgba(128, 0, 32, 0.1), rgba(160, 0, 40, 0.05));
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .tab:nth-child(1) { animation-delay: 0.6s; }
-        .tab:nth-child(2) { animation-delay: 0.7s; }
-        .tab:nth-child(3) { animation-delay: 0.8s; }
-
-        .tab-content {
-            display: none;
-            padding: 2.5rem;
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(26, 26, 26, 0.8));
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            margin-bottom: 3rem;
-            border: 1px solid var(--dark-border);
-            animation: fadeIn 0.5s ease;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 1s forwards;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
         }
 
-        .tab-content.active {
-            display: block;
+        .card:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(255, 106, 0, 0.15);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            position: relative;
-            display: inline-block;
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            border-radius: 2px;
-            box-shadow: 0 0 20px rgba(128, 0, 32, 0.5);
-        }
-
-        /* Остальные стили остаются такими же как в предыдущей версии */
-        /* Price Tab Styles */
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-card {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(34, 34, 34, 0.7));
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--dark-border);
-            color: var(--text-primary);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(128, 0, 32, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .pricing-card:hover::before {
-            left: 100%;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 
-                0 15px 35px rgba(128, 0, 32, 0.25),
-                0 0 50px rgba(128, 0, 32, 0.1);
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
         }
 
         .price {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin: 2rem 0;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(128, 0, 32, 0.4);
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #ffae00;
         }
 
-        .price span {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .features li {
-            padding: 12px 0;
-            color: var(--text-secondary);
-            border-bottom: 1px solid rgba(51, 51, 51, 0.5);
-            position: relative;
-        }
-
-        .features li:last-child {
-            border-bottom: none;
-        }
-
-        .features li::before {
-            content: '▶';
-            color: var(--accent);
-            margin-right: 10px;
-            font-size: 0.8rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: linear-gradient(135deg, transparent, rgba(128, 0, 32, 0.1));
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            border-radius: 12px;
-            font-weight: 700;
+        .btn-why {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 1px;
-            backdrop-filter: blur(10px);
+            font-size: 0.7rem;
+            font-weight: 900;
+            transition: 0.3s;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
+        .btn-why:hover { background: #fff; color: #000; }
+
+        .btn-buy {
+            background: linear-gradient(45deg, var(--primary), #ffae00);
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            box-shadow: 0 0 20px rgba(255, 106, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Страница ПОЧЕМУ */
+        #faq-page {
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
-            box-shadow: 
-                0 10px 25px rgba(128, 0, 32, 0.4),
-                0 0 30px rgba(128, 0, 32, 0.2);
-        }
-
-        .service-category {
-            margin-bottom: 4rem;
-        }
-
-        .service-category h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
-            font-weight: 600;
-            text-shadow: 0 0 15px rgba(128, 0, 32, 0.3);
-        }
-
-        /* Bio Tab Styles */
-        .info-card {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(34, 34, 34, 0.7));
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border: 1px solid var(--dark-border);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
-            box-shadow: 0 0 20px rgba(128, 0, 32, 0.5);
-        }
-
-        .info-section {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.5);
-        }
-
-        .info-section:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .info-label {
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            text-shadow: 0 0 10px rgba(128, 0, 32, 0.3);
-        }
-
-        .info-value {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Project Tab Styles */
-        .project-card {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(34, 34, 34, 0.7));
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-top: 2.5rem;
-            border: 1px solid var(--dark-border);
-            transition: var(--transition);
-            color: var(--text-primary);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
-            box-shadow: 0 0 20px rgba(128, 0, 32, 0.5);
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 
-                0 15px 35px rgba(128, 0, 32, 0.25),
-                0 0 40px rgba(128, 0, 32, 0.1);
-        }
-
-        .project-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            font-weight: 700;
-            text-shadow: 0 0 15px rgba(128, 0, 32, 0.3);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .project-link {
-            display: inline-flex;
+            background: #0d0d0d;
+            z-index: 9999;
+            display: flex;
             align-items: center;
-            gap: 12px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-            padding: 12px 25px;
-            border: 2px solid var(--accent);
+            justify-content: center;
+            padding: 30px;
+            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #faq-page.active { left: 0; }
+
+        .faq-content {
+            max-width: 600px;
+            background: rgba(255, 106, 0, 0.05);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 106, 0, 0.2);
+        }
+
+        .faq-content h2 { color: var(--primary); margin-bottom: 15px; font-size: 1.8rem; }
+        .faq-content p { color: #bbb; line-height: 1.6; margin-bottom: 25px; }
+        .date { color: #555; display: block; margin-bottom: 10px; font-weight: bold; }
+
+        .btn-back {
+            background: transparent;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px 25px;
             border-radius: 10px;
-            background: linear-gradient(135deg, transparent, rgba(128, 0, 32, 0.1));
-            backdrop-filter: blur(10px);
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        .project-link:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(128, 0, 32, 0.3);
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--dark-border);
-            margin-top: 4rem;
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(26, 26, 26, 0.8));
-            backdrop-filter: blur(20px);
-        }
-
-        .contact-info {
-            margin-top: 2rem;
-        }
-
-        .telegram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            transition: var(--transition);
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            background: linear-gradient(135deg, transparent, rgba(128, 0, 32, 0.1));
-        }
-
-        .telegram-link:hover {
-            background: var(--accent);
-            color: var(--dark-bg);
-            transform: translateY(-2px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 3.5rem;
-            }
-            
-            .tabs-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab {
-                width: 100%;
-                max-width: 280px;
-            }
-            
-            .pricing-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .cursor, .cursor-follower {
-                display: none;
-            }
-            
-            body {
-                cursor: default;
-            }
-        }
+        .ui-hidden { transform: translateX(-50px); opacity: 0; pointer-events: none; }
     </style>
 </head>
 <body>
-    <!-- Advanced Background Effects -->
-    <div class="gradient-bg" id="gradientBg"></div>
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
-    <div class="scan-line"></div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
-
+<div id="main-content">
     <header>
-        <div class="container">
-            <div class="logo">Central</div>
-            <p class="tagline">OSINT Specialist | Social Engineering</p>
-            <div class="nickname">@central</div>
-        </div>
+        <h1>Gengs Standoff Store</h1>
     </header>
 
     <div class="container">
-        <div class="tabs-container">
-            <button class="tab active" data-tab="bio">BIO</button>
-            <button class="tab" data-tab="price">PRICE</button>
-            <button class="tab" data-tab="project">PROJECT</button>
+        <div class="card">
+            <img src="photos/1.jpg" alt="Standoff Account">
+            <h3>Аккаунт #1</h3> 
+            <div class="price-row">
+                <div class="price">750 ₽</div>
+                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+            </div>
+            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
         </div>
 
-        <div id="bio" class="tab-content active">
-            <h2>Информация</h2>
-            
-            <div class="info-card">
-                <div class="info-section">
-                    <div class="info-label">Name</div>
-                    <div class="info-value">Central</div>
-                </div>
-                
-                <div class="info-section">
-                    <div class="info-label">Specializations</div>
-                    <div class="info-value">
-                        OSINT (Open Source Intelligence)<br>
-                        SE (Social Engineering)
-                    </div>
-                </div>
-                
-                <div class="info-section">
-                    <div class="info-label">Уровень специализации в сфере OSINT</div>
-                    <div class="info-value">Middle</div>
-                </div>
+        <div class="card">
+            <img src="photos/2.jpg" alt="Standoff Account">
+            <h3>Аккаунт #2</h3>
+            <div class="price-row">
+                <div class="price">1200 ₽</div>
+                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
+            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
         </div>
 
-        <div id="price" class="tab-content">
-            <h2>Услуги и цены</h2>
-            <p>Специализированные OSINT услуги</p>
-            
-            <div class="service-category">
-                <h3>Защита (DEFF)</h3>
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <h3>3 месяца</h3>
-                        <div class="price">200 <span>Telegram stars</span></div>
-                        <div class="price">6$ <span>@CryptoBot</span></div>
-                        <ul class="features">
-                            <li>Базовая защита цифровой личности</li>
-                            <li>Консультации по безопасности</li>
-                        </ul>
-                        <a href="https://t.me/cenntraal" class="btn" target="_blank">Заказать</a>
-                    </div>
-                    
-                    <div class="pricing-card">
-                        <h3>6 месяцев</h3>
-                        <div class="price">250 <span>Telegram stars</span></div>
-                        <div class="price">7$ <span>@CryptoBot</span></div>
-                        <ul class="features">
-                            <li>Расширенная защита</li>
-                            <li>Постоянный мониторинг</li>
-                        </ul>
-                        <a href="https://t.me/cenntraal" class="btn" target="_blank">Заказать</a>
-                    </div>
-                    
-                    <div class="pricing-card">
-                        <h3>Навсегда</h3>
-                        <div class="price">300 <span>Telegram stars</span></div>
-                        <div class="price">8$ <span>@CryptoBot</span></div>
-                        <ul class="features">
-                            <li>Полная защита</li>
-                            <li>Пожизненная поддержка</li>
-                        </ul>
-                        <a href="https://t.me/cenntraal" class="btn" target="_blank">Заказать</a>
-                    </div>
-                </div>
+        <div class="card">
+            <img src="photos/3.jpg" alt="Standoff Account">
+            <h3>Аккаунт #3</h3> 
+            <div class="price-row">
+                <div class="price">2500 ₽</div>
+                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            
-            <div class="service-category">
-                <h3>Поиск информации</h3>
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <h3>Поиск информации</h3>
-                        <div class="price">3$-18$</div>
-                        <div class="price">100-600 <span>Telegram stars</span></div>
-                        <ul class="features">
-                            <li>Зависит от сложности поиска</li>
-                            <li>Индивидуальный подход</li>
-                            <li>Конфиденциальность</li>
-                        </ul>
-                        <a href="https://t.me/cenntraal" class="btn" target="_blank">Заказать</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="project" class="tab-content">
-            <h2>Проекты</h2>
-            <p>Мои текущие проекты</p>
-            
-            <div class="project-card">
-                <h3 class="project-title">FortunessWheel</h3>
-                <p class="project-description">
-                    Колесо фортуны - проект для случайного выбора и принятия решений. 
-                    Инструмент для различных ситуаций, где требуется элемент случайности.
-                </p>
-                <a href="https://t.me/FortunessWheel" class="project-link" target="_blank">
-                    Перейти в канал →
-                </a>
-            </div>
+            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
         </div>
     </div>
+</div>
 
-    <footer>
-        <div class="container">
-            <p>© 2024 Central | OSINT Specialist</p>
-            <div class="contact-info">
-                <p>Связь через Telegram:</p>
-                <a href="https://t.me/cenntraal" class="telegram-link" target="_blank">
-                    @cenntraal
-                </a>
-            </div>
-        </div>
-    </footer>
+<section id="faq-page">
+    <div class="faq-content">
+        <span class="date">February 05, 2026</span>
+        <h2>Почему же аккаунты так дешево продаются?</h2>
+        <p>Все просто! Большая часть наших аккаунтов фишинговые.<br>
+        А также мы скупаем оптом аккаунты, которые продаются по минимальной цене и мониторим ПРАКТИЧЕСКИ все маркетплейсы с аккаунтами.</p>
+        
+        <h2>А что на счет слетов/банов аккаунтов?</h2>
+        <p>Все предусмотрено и вам не стоит беспокоится на счет этого, все наши аккаунты безопасно защищены от прежнего владельца, а все данные (пароли, логины и тд.) сменены.</p>
+        
+        <button class="btn-back" onclick="toggleFAQ()">← НАЗАД</button>
+    </div>
+</section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            // Tab switching functionality
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    tab.classList.add('active');
-                    const tabId = tab.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
+<script>
+    function toggleFAQ() {
+        document.getElementById('faq-page').classList.toggle('active');
+        document.getElementById('main-content').classList.toggle('ui-hidden');
+    }
+</script>
 
-            // Custom Cursor
-            const cursor = document.getElementById('cursor');
-            const cursorFollower = document.getElementById('cursorFollower');
-            const gradientBg = document.getElementById('gradientBg');
-
-            document.addEventListener('mousemove', (e) => {
-                // Main cursor
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-                
-                // Cursor follower with delay
-                setTimeout(() => {
-                    cursorFollower.style.left = (e.clientX - 30) + 'px';
-                    cursorFollower.style.top = (e.clientY - 30) + 'px';
-                }, 50);
-
-                // Parallax background effect
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-                
-                gradientBg.style.transform = `translate(${x * 30 - 15}px, ${y * 30 - 15}px)`;
-            });
-
-            // Cursor effects on interactive elements
-            const interactiveElements = document.querySelectorAll('button, a, .tab, .btn, .project-link');
-            
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'scale(1.5)';
-                    cursor.style.borderColor = 'var(--accent-light)';
-                    cursorFollower.style.transform = 'scale(1.2)';
-                    cursorFollower.style.borderColor = 'rgba(160, 0, 40, 0.5)';
-                });
-                
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.borderColor = 'var(--accent)';
-                    cursorFollower.style.transform = 'scale(1)';
-                    cursorFollower.style.borderColor = 'rgba(128, 0, 32, 0.3)';
-                });
-            });
-
-            // Hide cursor on mobile
-            if ('ontouchstart' in window) {
-                cursor.style.display = 'none';
-                cursorFollower.style.display = 'none';
-                document.body.style.cursor = 'default';
-            }
-        });
-    </script>
 </body>
 </html>
