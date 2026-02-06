@@ -43,6 +43,10 @@
             text-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
         }
 
+        #main-content {
+            transition: 0.5s ease-in-out;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -50,10 +54,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            transition: 0.5s ease-in-out;
         }
 
-        
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -77,6 +79,12 @@
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 15px;
+            cursor: zoom-in;
+            transition: 0.3s;
+        }
+
+        .card img:hover {
+            filter: brightness(1.2);
         }
 
         .card h3 {
@@ -114,7 +122,7 @@
 
         .btn-buy {
             background: linear-gradient(45deg, var(--primary), #ffae00);
-            color: #000;
+            color: #000 !important;
             text-decoration: none;
             text-align: center;
             padding: 14px;
@@ -129,7 +137,26 @@
             transform: translateY(-2px);
         }
 
-        /* Страница ПОЧЕМУ */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            padding: 20px;
+        }
+
+        #modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(255, 106, 0, 0.3);
+            border: 2px solid var(--primary);
+        }
+
         #faq-page {
             position: fixed;
             top: 0;
@@ -174,84 +201,97 @@
 </head>
 <body>
 
-<div class="container">
+<div id="modal" onclick="this.style.display='none'">
+    <img id="modal-img" src="" alt="Preview">
+</div>
+
+<div id="main-content">
+    <header>
+        <h1>Gengs Standoff Store</h1>
+    </header>
+
+    <div class="container">
         <div class="card">
-            <img src="1.jpg" alt="Standoff Account">
+            <img src="1.jpg" alt="Standoff Account" onclick="openModal(this.src)">
             <h3>Аккаунт #1</h3> 
             <div class="price-row">
                 <div class="price">450 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('1')">Купить</a>
         </div>
         
         <div class="card">
-            <img src="2.jpg" alt="Standoff Account">
+            <img src="2.jpg" alt="Standoff Account" onclick="openModal(this.src)">
             <h3>Аккаунт #2</h3>
             <div class="price-row">
                 <div class="price">300 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('2')">Купить</a>
         </div>
 
         <div class="card">
-            <img src="3.jpg" alt="Standoff Account">
+            <img src="3.jpg" alt="Standoff Account" onclick="openModal(this.src)">
             <h3>Аккаунт #3</h3> 
             <div class="price-row">
                 <div class="price">900 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('3')">Купить</a>
         </div>
     
         <div class="card">
-            <img src="4.jpg" alt="Standoff Account">
+            <img src="4.jpg" alt="Standoff Account" onclick="openModal(this.src)">
             <h3>Аккаунт #4</h3>
             <div class="price-row">
                 <div class="price">400 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('4')">Купить</a>
         </div>
 
         <div class="card">
-            <img src="5.jpg" alt="Standoff Account">
+            <img src="5.jpg" alt="Standoff Account" onclick="openModal(this.src)">
             <h3>Аккаунт #5</h3>
             <div class="price-row">
                 <div class="price">900 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('5')">Купить</a>
         </div>
     
         <div class="card">
-            <img src="6.jpg" alt="Standoff Account">
+            <img src="6.jpg" alt="Standoff Account" onclick="openModal(this.src)">
             <h3>Аккаунт #6</h3>
             <div class="price-row">
                 <div class="price">300 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('6')">Купить</a>
         </div>
 
         <div class="card">
-            <img src="8.jpg" alt="Standoff Account"> <h3>Аккаунт #7</h3>
+            <img src="8.jpg" alt="Standoff Account" onclick="openModal(this.src)">
+            <h3>Аккаунт #7</h3>
             <div class="price-row">
                 <div class="price">440 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('7')">Купить</a>
         </div>
-     <div class="card">
-            <img src="9.jpg" alt="Standoff Account"> <h3>Аккаунт #8</h3>
+
+        <div class="card">
+            <img src="9.jpg" alt="Standoff Account" onclick="openModal(this.src)">
+            <h3>Аккаунт #8</h3>
             <div class="price-row">
                 <div class="price">440 ₽</div>
                 <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
             </div>
-            <a href="https://t.me/god3eye" class="btn-buy">Купить</a>
+            <a href="#" class="btn-buy" onclick="buyAcc('8')">Купить</a>
         </div>
     </div>
+</div>
 
 <section id="faq-page">
     <div class="faq-content">
@@ -271,6 +311,16 @@
     function toggleFAQ() {
         document.getElementById('faq-page').classList.toggle('active');
         document.getElementById('main-content').classList.toggle('ui-hidden');
+    }
+
+    function openModal(src) {
+        document.getElementById('modal-img').src = src;
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function buyAcc(num) {
+        const text = encodeURIComponent(`Привет я по поводу аккаунта №${num}`);
+        window.location.href = `https://t.me/god3eye?text=${text}`;
     }
 </script>
 
