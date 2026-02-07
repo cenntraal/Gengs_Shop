@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gengs Shop | Standoff 2 Accounts</title>
+    <title>Gengs Shop | Standoff 2 Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -29,7 +29,7 @@
         }
 
         header {
-            padding: 50px 20px;
+            padding: 50px 20px 20px;
             text-align: center;
         }
 
@@ -41,6 +41,42 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 106, 0, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         #main-content {
@@ -83,14 +119,17 @@
             transition: 0.3s;
         }
 
-        .card img:hover {
-            filter: brightness(1.2);
-        }
-
         .card h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
             font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .price-row {
@@ -98,6 +137,7 @@
             align-items: center;
             justify-content: space-between;
             margin: 15px 0;
+            margin-top: auto;
         }
 
         .price {
@@ -210,85 +250,137 @@
         <h1>Gengs Standoff Store</h1>
     </header>
 
-    <div class="container">
-        <div class="card">
-            <img src="1.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #1</h3> 
-            <div class="price-row">
-                <div class="price">450 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
-            </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('1')">Купить</a>
-        </div>
-        
-        <div class="card">
-            <img src="2.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #2</h3>
-            <div class="price-row">
-                <div class="price">300 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
-            </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('2')">Купить</a>
-        </div>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('accs')">Аккаунты</button>
+        <button class="tab-btn" onclick="openTab('gold')">Голда</button>
+        <button class="tab-btn" onclick="openTab('boost')">Буст</button>
+    </div>
 
-        <div class="card">
-            <img src="3.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #3</h3> 
-            <div class="price-row">
-                <div class="price">900 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+    <div id="accs" class="tab-content active">
+        <div class="container">
+            <div class="card">
+                <img src="1.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #1</h3> 
+                <div class="price-row">
+                    <div class="price">450 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №1')">Купить</a>
             </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('3')">Купить</a>
-        </div>
-    
-        <div class="card">
-            <img src="4.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #4</h3>
-            <div class="price-row">
-                <div class="price">400 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+            <div class="card">
+                <img src="2.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #2</h3>
+                <div class="price-row">
+                    <div class="price">300 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №2')">Купить</a>
             </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('4')">Купить</a>
+            <div class="card">
+                <img src="3.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #3</h3> 
+                <div class="price-row">
+                    <div class="price">900 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №3')">Купить</a>
+            </div>
+            <div class="card">
+                <img src="4.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #4</h3>
+                <div class="price-row">
+                    <div class="price">400 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №4')">Купить</a>
+            </div>
+            <div class="card">
+                <img src="5.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #5</h3>
+                <div class="price-row">
+                    <div class="price">900 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №5')">Купить</a>
+            </div>
+            <div class="card">
+                <img src="6.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #6</h3>
+                <div class="price-row">
+                    <div class="price">300 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №6')">Купить</a>
+            </div>
+            <div class="card">
+                <img src="8.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #7</h3>
+                <div class="price-row">
+                    <div class="price">440 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №7')">Купить</a>
+            </div>
+            <div class="card">
+                <img src="9.jpg" onclick="openModal(this.src)">
+                <h3>Аккаунт #8</h3>
+                <div class="price-row">
+                    <div class="price">440 ₽</div>
+                    <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Аккаунт №8')">Купить</a>
+            </div>
         </div>
+    </div>
 
-        <div class="card">
-            <img src="5.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #5</h3>
-            <div class="price-row">
-                <div class="price">900 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+    <div id="gold" class="tab-content">
+        <div class="container">
+            <div class="card">
+                <img src="golds1.jpg" onclick="openModal(this.src)">
+                <h3>250 Голды</h3>
+                <div class="price-row">
+                    <div class="price">150 ₽</div>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('250 голды')">Купить</a>
             </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('5')">Купить</a>
-        </div>
-    
-        <div class="card">
-            <img src="6.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #6</h3>
-            <div class="price-row">
-                <div class="price">300 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+            <div class="card">
+                <img src="golds2.jpg" onclick="openModal(this.src)">
+                <h3>500 Голды</h3>
+                <div class="price-row">
+                    <div class="price">250 ₽</div>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('500 голды')">Купить</a>
             </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('6')">Купить</a>
+            <div class="card">
+                <img src="golds3.jpg" onclick="openModal(this.src)">
+                <h3>1000 Голды</h3>
+                <div class="price-row">
+                    <div class="price">400 ₽</div>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('1000 голды')">Купить</a>
+            </div>
+            <div class="card">
+                <img src="golds4.jpg" onclick="openModal(this.src)">
+                <h3>3000 Голды</h3>
+                <div class="price-row">
+                    <div class="price">1200 ₽</div>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('3000 голды')">Купить</a>
+            </div>
         </div>
+    </div>
 
-        <div class="card">
-            <img src="8.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #7</h3>
-            <div class="price-row">
-                <div class="price">440 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
+    <div id="boost" class="tab-content">
+        <div class="container">
+            <div class="card">
+                <img src="boost.jpg" onclick="openModal(this.src)">
+                <h3>Буст до Legend</h3>
+                <p>Наша команда нанимает для вас профессиональных игроков для поднятие звания до The Legend за минимальную цену</p>
+                <div class="price-row">
+                    <div class="price">350 ₽</div>
+                </div>
+                <a href="#" class="btn-buy" onclick="buyItem('Буст до Легенды')">Купить</a>
             </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('7')">Купить</a>
-        </div>
-
-        <div class="card">
-            <img src="9.jpg" alt="Standoff Account" onclick="openModal(this.src)">
-            <h3>Аккаунт #8</h3>
-            <div class="price-row">
-                <div class="price">440 ₽</div>
-                <button class="btn-why" onclick="toggleFAQ()">ПОЧЕМУ?</button>
-            </div>
-            <a href="#" class="btn-buy" onclick="buyAcc('8')">Купить</a>
         </div>
     </div>
 </div>
@@ -299,15 +391,22 @@
         <h2>Почему же аккаунты так дешево продаются?</h2>
         <p>Все просто! Большая часть наших аккаунтов фишинговые.<br>
         А также мы скупаем оптом аккаунты, которые продаются по минимальной цене и мониторим ПРАКТИЧЕСКИ все маркетплейсы с аккаунтами.</p>
-        
         <h2>А что на счет слетов/банов аккаунтов?</h2>
         <p>Все предусмотрено и вам не стоит беспокоится на счет этого, все наши аккаунты безопасно защищены от прежнего владельца, а все данные (пароли, логины и тд.) сменены.</p>
-        
         <button class="btn-back" onclick="toggleFAQ()">← НАЗАД</button>
     </div>
 </section>
 
 <script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        const buttons = document.querySelectorAll('.tab-btn');
+        contents.forEach(content => content.classList.remove('active'));
+        buttons.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
     function toggleFAQ() {
         document.getElementById('faq-page').classList.toggle('active');
         document.getElementById('main-content').classList.toggle('ui-hidden');
@@ -318,8 +417,8 @@
         document.getElementById('modal').style.display = 'flex';
     }
 
-    function buyAcc(num) {
-        const text = encodeURIComponent(`Привет я по поводу аккаунта №${num}`);
+    function buyItem(name) {
+        const text = encodeURIComponent(`Привет я по поводу товара: ${name}`);
         window.location.href = `https://t.me/god3eye?text=${text}`;
     }
 </script>
