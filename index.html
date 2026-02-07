@@ -28,8 +28,32 @@
             background: radial-gradient(circle at top right, #3d1a00, #0d0d0d 60%);
         }
 
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .btn-channel {
+            background: rgba(255, 106, 0, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-channel:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 106, 0, 0.4);
+        }
+
         header {
-            padding: 50px 20px 20px;
+            padding: 20px 20px 20px;
             text-align: center;
         }
 
@@ -111,8 +135,8 @@
 
         .card img {
             width: 100%;
-            height: 180px;
-            object-fit: cover;
+            height: auto;
+            display: block;
             border-radius: 12px;
             margin-bottom: 15px;
             cursor: zoom-in;
@@ -246,6 +270,10 @@
 </div>
 
 <div id="main-content">
+    <div class="top-nav">
+        <a href="https://t.me/+O0sWvgkdnjwwNDVl" class="btn-channel" target="_blank">Наш официальный канал</a>
+    </div>
+
     <header>
         <h1>Gengs Standoff Store</h1>
     </header>
